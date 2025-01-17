@@ -31,7 +31,7 @@ watchEffect(async () => {
                         </span>
 
                         <p class="ms-3 font-medium text-sm text-white truncate">
-                            {{ message }}
+                            {{ message }} 
                         </p>
                     </div>
 

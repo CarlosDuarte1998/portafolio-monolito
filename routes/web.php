@@ -4,6 +4,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
+//Router for the admin panel
+
 Route::get('/admin', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -13,17 +16,41 @@ Route::get('/admin', function () {
     ]);
 });
 
-Route::get('/', function () {
-    return Inertia::render('ClientView', [
-    ]);
-});
+
+
+
+
+
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/admin/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/admin/proyects', function () {
+        return Inertia::render('Dashboard');
+    })->name('proyects');
+});
+
+
+
+
+//Router for the client panel
+
+
+Route::get('/', function () {
+    return Inertia::render('ClientView', [
+    ]);
+});
+

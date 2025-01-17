@@ -16,6 +16,8 @@ return [
     |
     */
 
+    'prefix' => 'admin',
+
     'stack' => 'inertia',
 
     /*
