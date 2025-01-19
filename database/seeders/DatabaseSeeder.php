@@ -15,9 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call(
+           AboutMeTableSeeder::class,
+        );
+
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Carlos Duarte',
+            'email' => 'hdzalex1998@gmail.com',
+            'password' => bcrypt('Hdzalex1.'),
         ]);
     }
 }

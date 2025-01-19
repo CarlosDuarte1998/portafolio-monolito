@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
@@ -7,9 +7,17 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { useProjectStore } from '@/stores/projects';
+
+const projectStore = useProjectStore();
+
 
 defineProps({
     title: String,
+});
+
+onMounted(() => {
+    projectStore.fetchProjects();
 });
 
 const showingNavigationDropdown = ref(false);
@@ -52,8 +60,12 @@ const logout = () => {
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Inicio
                                 </NavLink>
-                                <NavLink :href="route('proyects')" :active="route().current('proyects')">
+                                <NavLink :href="route('projects')" :active="route().current('projects')">
                                     Proyectos
+                                </NavLink>
+
+                                <NavLink :href="route('aboutMe')" :active="route().current('aboutMe')">
+                                    Acerca de mi
                                 </NavLink>
 
 
@@ -313,7 +325,8 @@ const logout = () => {
                     <Head :title="title" />
                     <slot name="home"  />
                 </template>
-                <slot name="proyects" v-if="route().current('proyects')" />
+                <slot name="projects" v-if="route().current('projects')" />
+                <slot name="aboutMe" v-if="route().current('aboutMe')" />
             </main>
 
 

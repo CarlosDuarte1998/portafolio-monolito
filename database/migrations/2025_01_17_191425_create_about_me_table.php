@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('facebook_url')->nullable();
             $table->string('youtube_url')->nullable();
             $table->string('image_url')->nullable();
+            $table->string('pdf_url')->nullable();
             $table->string('icon_class')->nullable();
             $table->timestamps();
         });

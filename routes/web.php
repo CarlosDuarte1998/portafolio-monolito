@@ -38,11 +38,20 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/admin/proyects', function () {
+    Route::get('/admin/projects', function () {
         return Inertia::render('Dashboard');
-    })->name('proyects');
+    })->name('projects');
 });
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/admin/about-me', function () {
+        return Inertia::render('Dashboard');
+    })->name('aboutMe');
+});
 
 
 
