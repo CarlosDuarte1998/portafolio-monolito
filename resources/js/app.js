@@ -15,6 +15,12 @@ import { faFilePdf, faX } from '@fortawesome/free-solid-svg-icons';
 import {  } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGithub, faInstagram, faLinkedin, faSquareXTwitter, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
+import PrimeVue from 'primevue/config';
+import Aura from '@primevue/themes/aura';
+
+
+
+
 library.add(
     faSquareXTwitter,
     faXTwitter,
@@ -36,6 +42,11 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .component('fa', FontAwesomeIcon)
+            .use(PrimeVue,
+                {
+                    unstyled: true,
+                }
+            )
             .use(createPinia())
             .use(ZiggyVue)
             .mount(el);

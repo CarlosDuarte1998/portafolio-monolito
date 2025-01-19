@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,12 +18,17 @@ class DatabaseSeeder extends Seeder
 
         $this->call(
            AboutMeTableSeeder::class,
+           
+        );
+
+        $this->call(
+            SkillsSeeder::class,
         );
 
         User::factory()->create([
             'name' => 'Carlos Duarte',
             'email' => 'hdzalex1998@gmail.com',
-            'password' => bcrypt('12345678.'),
+            'password' => bcrypt('123456789'),
         ]);
     }
 }

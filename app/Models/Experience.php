@@ -12,14 +12,17 @@ class Experience extends Model
     protected $fillable = [
         'title',
         'company',
+        'description',
+        'url',
+        'image',
         'start_year',
         'end_year',
-        'description',
+        
     ];
 
     // Relación con habilidades
     public function skills()
     {
-        return $this->hasMany(ExperienceSkill::class);
+        return $this->belongsToMany(Skill::class, 'skills_experiences');
     }
 }

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            //1: experiencia, 2: proyecto
+            $table->tinyInteger('typeSkill')->default(1);
             $table->timestamps();
         });
     }
