@@ -5,6 +5,7 @@ export const useProjectStore = defineStore('project', {
     state: () => ({
         projects: [],
         loading: false,
+        dataChip: [],
     }),
     actions: {
 

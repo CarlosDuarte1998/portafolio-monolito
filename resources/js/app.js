@@ -1,7 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
 import '../css/style.css';
-
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -11,13 +10,12 @@ import { createPinia } from 'pinia';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
 //import alls icons from fontawesome
-import { faFilePdf, faX } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf, faShare, faX, prefix } from '@fortawesome/free-solid-svg-icons';
 import {  } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faGithub, faInstagram, faLinkedin, faSquareXTwitter, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
-
 
 
 
@@ -29,7 +27,8 @@ library.add(
     faYoutube,
     faLinkedin,
     faFacebook,
-    faFilePdf
+    faFilePdf,
+    faShare
     
 );
 
@@ -42,11 +41,19 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .component('fa', FontAwesomeIcon)
-            .use(PrimeVue,
-                {
-                    unstyled: true,
+            .use(PrimeVue, {
+                theme: {
+                    preset: Aura,
+                    
+                    options: {
+                        cssLayer: {
+                            name: 'primevue',
+                            order: 'tailwind-base, primevue, tailwind-utilities'
+                        },
+                        darkModeSelector: false || 'none',
+                    }
                 }
-            )
+             })
             .use(createPinia())
             .use(ZiggyVue)
             .mount(el);

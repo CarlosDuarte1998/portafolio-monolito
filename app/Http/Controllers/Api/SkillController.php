@@ -16,7 +16,7 @@ class SkillController extends Controller
     public function index()
     {
         return response()->json([
-            'skills' => Skill::all(),
+            'data' => Skill::all(),
         ]);
     }
 
@@ -36,7 +36,6 @@ class SkillController extends Controller
         $skill = Skill::create($validatedData);
 
         return response()->json([
-            'message' => 'Skill created successfully',
             'skill' => $skill,
         ]);
     }
@@ -79,8 +78,7 @@ class SkillController extends Controller
             $skill->update($validatedData);
 
             return response()->json([
-                'message' => 'Skill updated successfully',
-                'skill' => $skill,
+                 $skill,
             ]);
         }
 
